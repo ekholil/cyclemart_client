@@ -19,7 +19,7 @@ const ManageProducts = () => {
     const handleDelete = id => {
         swal({
             title: "Are you sure?",
-            text: "Your order will be cancelled",
+            text: "This product will be deleted",
             icon: "warning",
             buttons: true,
             dangerMode: true,

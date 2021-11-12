@@ -34,13 +34,15 @@ return (
                 </NavLink>
               </CNavLink>
             </CNavItem>
-            <CNavItem>
+            {
+              user.email && <CNavItem>
               <CNavLink>
                 <NavLink to="/dashboard">
                   Dashboard
                 </NavLink>
               </CNavLink>
             </CNavItem>
+            }
             {user.email &&
               <CNavItem>
               <CNavLink>
