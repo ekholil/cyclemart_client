@@ -10,14 +10,18 @@ import {
 } from "@coreui/react";
 import React, { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
+import AddProduct from "./AddProduct";
 import MakeAdmin from "./MakeAdmin";
 import ManageOrder from "./ManageOrder";
+import ManageProducts from "./ManageProducts";
 import MyOrders from "./MyOrders";
 import Review from "./Review";
 
 const Dashboard = () => {
   const [activeKey, setActiveKey] = useState(1);
   const {logOut, admin} = useAuth()
+  const manageKey = admin? 1: 5;
+  console.log(manageKey)
  
   return (
     <>
@@ -72,35 +76,56 @@ const Dashboard = () => {
 
                 </div>
               }
-              {admin && 
-              <div>
-                <CNavItem>
-                <CNavLink
+             
+                {admin && <div>
+                  <CNavItem>
+                  <CNavLink
                   href="javascript:void(0);"
-                  active={activeKey === 5}
-                  onClick={() => setActiveKey(5)}
+                  active={activeKey === manageKey}
+                  onClick={() => setActiveKey(manageKey)}
                 >
-                  Make Admin
+                  Manage Orders
                 </CNavLink>
               </CNavItem>
-              <CNavItem>
+                <CNavItem>
                 <CNavLink
                   href="javascript:void(0);"
                   active={activeKey === 6}
                   onClick={() => setActiveKey(6)}
                 >
-                  Manage Orders
+                  Make Admin
                 </CNavLink>
-              </CNavItem>
+              </CNavItem>  
+                  
+                <CNavItem>
+                <CNavLink
+                  href="javascript:void(0);"
+                  active={activeKey === 7}
+                  onClick={() => setActiveKey(7)}
+                >
+                  Add A Product
+                </CNavLink>
+              </CNavItem>  
 
-              </div>
-              
-              }
+                <CNavItem>
+                <CNavLink
+                  href="javascript:void(0);"
+                  active={activeKey === 8}
+                  onClick={() => setActiveKey(8)}
+                >
+                  Manage Products
+                </CNavLink>
+              </CNavItem>  
+                  
+                  
+                </div>}           
             </CNav>
           </CCol>
           <CCol md={10}>
             <CTabContent>
-              <CTabPane
+              {!admin && 
+                <div>
+                  <CTabPane
                 role="tabpanel"
                 aria-labelledby="home-tab"
                 visible={activeKey === 1}
@@ -122,22 +147,47 @@ const Dashboard = () => {
                <Review />
              
               </CTabPane>
-              <CTabPane
+                </div>
+              }
+             
+          
+                      <CTabPane
                 role="tabpanel"
                 aria-labelledby="contact-tab"
-                visible={activeKey === 5}
+                visible={activeKey === manageKey}
               >
-               <MakeAdmin />
+               <ManageOrder />
              
               </CTabPane>
+
               <CTabPane
                 role="tabpanel"
                 aria-labelledby="contact-tab"
                 visible={activeKey === 6}
               >
-               <ManageOrder />
+               <MakeAdmin />
              
               </CTabPane>
+
+              <CTabPane
+                role="tabpanel"
+                aria-labelledby="contact-tab"
+                visible={activeKey === 7}
+              >
+               <AddProduct />
+             
+              </CTabPane>
+
+              <CTabPane
+                role="tabpanel"
+                aria-labelledby="contact-tab"
+                visible={activeKey === 8}
+              >
+               <ManageProducts />
+             
+              </CTabPane>
+               
+             
               
             </CTabContent>
           </CCol>

@@ -10,12 +10,14 @@ const Products = () => {
         .then(res => res.json())
         .then(data => setProducts(data))
     }, [])
+    const slicedProducts = products.slice(0,6)
     return (
         <div>
-            <CContainer>
+            <CContainer className="mt-4">
+                <h2 className="text-success text-center mb-3">Featured Bikes</h2>
             <CRow xs={{ cols: 1, gutter: 4 }} md={{ cols: 3 }}>
                 {
-                    products.map(product => <Product key={product._id} product={product} />)
+                    slicedProducts.map(product => <Product key={product._id} product={product} />)
                 }
                 
             </CRow>

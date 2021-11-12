@@ -24,7 +24,7 @@ const Review = () => {
         reset()
     };
     return (
-        <div>
+        <div style={{marginTop: '-300px'}}>
             <h2 className="text-success text-center">Write A Review</h2>
             <form
               className="d-flex flex-column mx-auto mt-4"

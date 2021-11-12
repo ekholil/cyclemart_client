@@ -19,16 +19,19 @@ const Buynow = () => {
         data.productName = product?.name;
         data.productImg = product?.imgurl;
         data.totalPrice = product?.price
-           axios.post('http://localhost:5000/orders', data)
-          .then((res) => {
-            if(res.acknowledged) {
-              swal("Well Done", "Your order is recorded", "success");
-              reset();
-              console.log(data)
-            }
-          });
-        console.log(data)
-       
+        fetch('http://localhost:5000/orders', {
+          method: 'POST',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then((data) => {
+          if(data.acknowledged) {
+            swal("Well Done", "Your order is recorded", "success");
+            reset();
+            console.log(data)
+          }
+        });
         reset()
     };
 

@@ -4,34 +4,18 @@ import swal from "sweetalert";
 import useAuth from '../../../Hooks/useAuth';
 
 
-const ManageOrder = () => {
-    const [orders, setOrders] = useState([])
-    const [shipped, setShipped] = useState(false)
+const ManageProducts = () => {
+    const [products, setProducts] = useState([])
     const {user} = useAuth()
     useEffect(() => {
-        fetch(`http://localhost:5000/orders`)
+        fetch(`http://localhost:5000/products`)
         .then(res => res.json())
         .then(data => {
-            setOrders(data)
+            setProducts(data)
             console.log(data)
         })
-    }, [shipped])
-    const updateStatus = (id, index )=> {
-        const updatedItem = orders[index]
-        updatedItem.status = 'Shipped';
-        fetch(`http://localhost:5000/updatestatus/${id}`, {
-            method: 'PUT', 
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(updatedItem)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                setShipped(!shipped)
-                swal('Success', 'This order is now shipped', 'success')
-            }
-        })
-    }
+    }, [])
+    
     const handleDelete = id => {
         swal({
             title: "Are you sure?",
@@ -42,16 +26,16 @@ const ManageOrder = () => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                fetch(`http://localhost:5000/deleteorder/${id}`, {
+                fetch(`http://localhost:5000/products/${id}`, {
                     method: 'DELETE', 
                     headers: {'content-type' : 'application/json'}
                 })
                 .then(res => res.json())
                 .then(data => {
                     if(data.acknowledged){
-                        const remaining = orders.filter(item => item._id !== id)
-                        setOrders(remaining)
-                        swal("Your order is cancelled", {
+                        const remaining = products.filter(item => item._id !== id)
+                        setProducts(remaining)
+                        swal("Product is deleted", {
                             icon: "success",
                           });
                     }
@@ -65,33 +49,28 @@ const ManageOrder = () => {
         <div>
             <h2 className="text-success text-center">List of all Order</h2>
             {
-            orders.length === 0? <CSpinner /> : <div style={{overflowX: 'auto'}}>
+            products.length === 0? <CSpinner /> : <div style={{overflowX: 'auto'}}>
             <CTable hover style={{verticalAlign:'middle', width: '100%'}}>
                 <CTableHead>
                     <CTableRow>
                     <CTableHeaderCell scope="col">#</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Product Id</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Email</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Product Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Price</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Status</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Product Price</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Action</CTableHeaderCell>
                     </CTableRow>
                 </CTableHead>
                 <CTableBody>
                     {
-                        orders.map((item, index) => {
+                        products.map((item, index) => {
                            return <CTableRow >
                         <CTableHeaderCell scope="row">{index + 1}</CTableHeaderCell>
+                        <CTableDataCell>{item._id}</CTableDataCell>
                         <CTableDataCell>{item.name}</CTableDataCell>
-                        <CTableDataCell>{item.email}</CTableDataCell>
-                        <CTableDataCell>{item.productName}</CTableDataCell>
-                        <CTableDataCell>{item.totalPrice}</CTableDataCell>
-                        <CTableDataCell>{item.status}</CTableDataCell>
+                        <CTableDataCell>{item.price}</CTableDataCell>
+                       
                         <CTableDataCell>
-                          
-                            <button onClick={() => updateStatus(item._id, index)} className="btn btn-success text-white me-3">Shipped</button>
-                            <button onClick={() => handleDelete(item._id)} className="btn btn-danger text-white">Delete</button>
+                          <button onClick={() => handleDelete(item._id)} className="btn btn-danger text-white">Delete</button>
                            
                         </CTableDataCell>
                     </CTableRow>
@@ -106,4 +85,4 @@ const ManageOrder = () => {
     );
 };
 
-export default ManageOrder;
+export default ManageProducts;
