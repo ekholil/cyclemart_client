@@ -8,7 +8,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([])
     const {user} = useAuth()
     useEffect(() => {
-        fetch(`http://localhost:5000/myorders/${user.email}`)
+        fetch(`https://calm-gorge-61039.herokuapp.com/myorders/${user.email}`)
         .then(res => res.json())
         .then(data => {
             setOrders(data)
@@ -25,7 +25,7 @@ const MyOrders = () => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                fetch(`http://localhost:5000/cancelorder/${id}`, {
+                fetch(`https://calm-gorge-61039.herokuapp.com/cancelorder/${id}`, {
                     method: 'DELETE', 
                     headers: {'content-type' : 'application/json'}
                 })

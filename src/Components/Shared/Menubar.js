@@ -18,8 +18,8 @@ return (
           aria-expanded={visible}
           onClick={() => setVisible(!visible)}
         />
-        <CCollapse className="me-auto navbar-collapse" visible={visible}>
-          <CNavbarNav>
+        <CCollapse className="navbar-collapse" visible={visible}>
+          <CNavbarNav className="ms-auto">
             <CNavItem>
               <CNavLink active>
                 <NavLink to="/home">

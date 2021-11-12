@@ -19,7 +19,7 @@ const Buynow = () => {
         data.productName = product?.name;
         data.productImg = product?.imgurl;
         data.totalPrice = product?.price
-        fetch('http://localhost:5000/orders', {
+        fetch('https://calm-gorge-61039.herokuapp.com/orders', {
           method: 'POST',
           headers: {'content-type': 'application/json'},
           body: JSON.stringify(data)
@@ -36,7 +36,7 @@ const Buynow = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://calm-gorge-61039.herokuapp.com/products/${id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     }, [id])

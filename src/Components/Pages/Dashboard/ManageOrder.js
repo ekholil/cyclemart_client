@@ -9,7 +9,7 @@ const ManageOrder = () => {
     const [shipped, setShipped] = useState(false)
     const {user} = useAuth()
     useEffect(() => {
-        fetch(`http://localhost:5000/orders`)
+        fetch(`https://calm-gorge-61039.herokuapp.com/orders`)
         .then(res => res.json())
         .then(data => {
             setOrders(data)
@@ -19,7 +19,7 @@ const ManageOrder = () => {
     const updateStatus = (id, index )=> {
         const updatedItem = orders[index]
         updatedItem.status = 'Shipped';
-        fetch(`http://localhost:5000/updatestatus/${id}`, {
+        fetch(`https://calm-gorge-61039.herokuapp.com/updatestatus/${id}`, {
             method: 'PUT', 
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(updatedItem)
@@ -42,7 +42,7 @@ const ManageOrder = () => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                fetch(`http://localhost:5000/deleteorder/${id}`, {
+                fetch(`https://calm-gorge-61039.herokuapp.com/deleteorder/${id}`, {
                     method: 'DELETE', 
                     headers: {'content-type' : 'application/json'}
                 })

@@ -8,7 +8,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([])
     const {user} = useAuth()
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://calm-gorge-61039.herokuapp.com/products`)
         .then(res => res.json())
         .then(data => {
             setProducts(data)
@@ -26,7 +26,7 @@ const ManageProducts = () => {
           })
           .then((willDelete) => {
             if (willDelete) {
-                fetch(`http://localhost:5000/products/${id}`, {
+                fetch(`https://calm-gorge-61039.herokuapp.com/products/${id}`, {
                     method: 'DELETE', 
                     headers: {'content-type' : 'application/json'}
                 })

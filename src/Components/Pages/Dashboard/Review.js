@@ -8,7 +8,7 @@ const Review = () => {
     const {user} = useAuth()
     const { register, reset,  handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = data => {
-       fetch('http://localhost:5000/review', {
+       fetch('https://calm-gorge-61039.herokuapp.com/review', {
            method: 'POST', 
            headers: {'content-type': 'application/json'},
            body: JSON.stringify(data)
@@ -24,7 +24,7 @@ const Review = () => {
         reset()
     };
     return (
-        <div style={{marginTop: '-300px'}}>
+        <div>
             <h2 className="text-success text-center">Write A Review</h2>
             <form
               className="d-flex flex-column mx-auto mt-4"

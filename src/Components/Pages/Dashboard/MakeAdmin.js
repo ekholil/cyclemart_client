@@ -12,7 +12,7 @@ const MakeAdmin = () => {
             return
         }
         const user = {email}
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://calm-gorge-61039.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(user)
@@ -22,7 +22,7 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <div>
+        <div >
             <form onSubmit={handleSubmit}>
                 <input className="form-control w-50" onBlur={handleOnblur} type="email" placeholder="Enter email address of a user" required/>
                 <button className="btn btn-success mt-2" type="submit">Make Admin</button>
