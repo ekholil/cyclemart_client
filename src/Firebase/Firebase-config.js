@@ -1,9 +1,10 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAMsW1Nl6kzByPkk9cp0ZcGr5BBmD_r1p0",
-  authDomain: "cyclemart-79076.firebaseapp.com",
-  projectId: "cyclemart-79076",
-  storageBucket: "cyclemart-79076.appspot.com",
-  messagingSenderId: "37357728585",
-  appId: "1:37357728585:web:1ef24ec72415627411e098"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
   };
 export default firebaseConfig;
+
