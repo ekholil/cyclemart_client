@@ -21,28 +21,28 @@ const Register = () => {
         console.log(user)
       }
     return (
-        <CContainer style={{margin: '80px'}}>
+        <CContainer style={{marginTop: '80px'}}>
             <CRow>
-                <CCol>
+                <CCol md={6}>
                 <img className="img-fluid" src={registerimg} alt="" />
                 
                 </CCol>
-                <CCol>
+                <CCol md={6}>
                    <h1> Please Register</h1>
                    <CForm onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <CFormLabel htmlFor="exampleInputEmail1">Name</CFormLabel>
-                        <CFormInput style={{width:'80%'}} onBlur={handleInput} name="name" type="text" required/>
+                        <CFormInput style={{width:'100%'}} onBlur={handleInput} name="name" type="text" required/>
                     
                     </div>
                     <div className="mb-3">
                         <CFormLabel htmlFor="exampleInputEmail1">Email address</CFormLabel>
-                        <CFormInput style={{width:'80%'}} onBlur={handleInput} type="email" name="email" aria-describedby="emailHelp" required/>
+                        <CFormInput style={{width:'100%'}} onBlur={handleInput} type="email" name="email" aria-describedby="emailHelp" required/>
                     
                     </div>
                     <div className="mb-3">
                         <CFormLabel htmlFor="exampleInputPassword1">Password</CFormLabel>
-                        <CFormInput style={{width:'80%'}} onBlur={handleInput} type="password" name="password" required/>
+                        <CFormInput style={{width:'100%'}} onBlur={handleInput} type="password" name="password" required/>
                     </div>
                     
                     <CButton type="submit" color="success" className='text-white'>
