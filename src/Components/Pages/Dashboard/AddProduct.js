@@ -28,7 +28,7 @@ const AddProduct = () => {
 
   return (
     <div>
-      <h1 className="text-center text-success" style={{marginTop:'70px'}}>Add a new Traveling Spot</h1>
+      <h1 className="text-center text-success" style={{marginTop:'70px'}}>Add a new Product</h1>
       <div className="mt-5">
         <form
           className="d-flex flex-column  mx-auto"

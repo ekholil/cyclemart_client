@@ -14,8 +14,8 @@ const Product = ({product}) => {
                     <CCardText>
                     {desc}
                     </CCardText>
-                    <h3>{price}</h3>
-                    <Link to={`/buynow/${_id}`} className="btn btn-success">Buy now</Link>
+                    <h3>৳{price}</h3>
+                    <Link to={`/buynow/${_id}`} className="text-white btn btn-success">Buy now</Link>
                 </CCardBody>
               
                 </CCard>

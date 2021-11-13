@@ -22,10 +22,10 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <div >
+        <div className="my-4">
             <form onSubmit={handleSubmit}>
                 <input className="form-control w-50" onBlur={handleOnblur} type="email" placeholder="Enter email address of a user" required/>
-                <button className="btn btn-success mt-2" type="submit">Make Admin</button>
+                <button className="btn btn-success text-white mt-2" type="submit">Make Admin</button>
             </form>
         </div>
     );

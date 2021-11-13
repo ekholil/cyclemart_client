@@ -1,7 +1,6 @@
 import { CButton, CCol, CContainer, CRow } from '@coreui/react';
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link,
@@ -24,7 +23,7 @@ const Dashboard = () => {
   return (
     <div>
       <CContainer style={{marginTop:'80px'}}>
-        <CRow>
+        <CRow className="my-4">
           <CCol md={2}>
           {
             !admin && 

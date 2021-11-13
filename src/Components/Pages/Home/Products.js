@@ -21,7 +21,9 @@ const Products = () => {
                 }
                 
             </CRow>
-            <NavLink className="btn btn-success my-4" to="/explore">Explore All Bicycles</NavLink>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <NavLink className="text-white btn btn-success my-4" to="/explore">Explore All Bicycles</NavLink>
+            </div>
             </CContainer>
         </div>
     );

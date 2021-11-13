@@ -8,6 +8,10 @@ const Menubar = () => {
     
         const [visible, setVisible] = useState(false)
         const {user, logOut} = useAuth()
+        const active = {
+          backgroundColor: '#2EB85C', 
+          color: '#fff'
+        }
 return (
   <>
     <CNavbar expand="lg" colorScheme="light" className="bg-light fixed-top">
@@ -19,17 +23,17 @@ return (
           onClick={() => setVisible(!visible)}
         />
         <CCollapse className="navbar-collapse" visible={visible}>
-          <CNavbarNav className="ms-auto">
+          <CNavbarNav className="ms-auto d-flex align-items-center">
             <CNavItem>
               <CNavLink active>
-                <NavLink to="/home">
+                <NavLink activeStyle={active} className="btn" to="/home">
                   Home
                 </NavLink>
               </CNavLink>
             </CNavItem>
             <CNavItem>
               <CNavLink>
-                <NavLink to="/explore">
+                <NavLink  activeStyle={active} className="btn" to="/explore">
                   Explore Bicycles
                 </NavLink>
               </CNavLink>
@@ -37,7 +41,7 @@ return (
             {
               user.email && <CNavItem>
               <CNavLink>
-                <NavLink to="/dashboard">
+                <NavLink  activeStyle={active} className="btn" to="/dashboard">
                   Dashboard
                 </NavLink>
               </CNavLink>
@@ -52,12 +56,12 @@ return (
             }
             {
               user.email? <CNavItem>
-              <CNavLink onClick={logOut} className="btn btn-danger">
+              <CNavLink onClick={logOut} style={{background: '#0872ED'}} className="btn text-white">
                 Log out
               </CNavLink>
             </CNavItem> : <CNavItem>
               <CNavLink>
-                <NavLink to="/login">Login</NavLink>
+                <NavLink  activeStyle={active} className="btn" to="/login">Login</NavLink>
               </CNavLink>
             </CNavItem>
             }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ItemsCarousel from 'react-items-carousel';
-import {BiStar} from 'react-icons/bi'
+import {AiFillStar, AiOutlineStar, AiFillLeftCircle, AiFillRightCircle} from 'react-icons/ai'
 import Rating from 'react-rating';
 import person from './user.png'
 const Reviews = () => {
@@ -13,14 +13,15 @@ const Reviews = () => {
         .then(data => setReviews(data))
     }, [])
   return (
-    <div style={{ padding: `0 ${chevronWidth}px` }}>
+    <div style={{ padding: '0 100px' }}>
       <ItemsCarousel
         requestToChangeActive={setActiveItemIndex}
         activeItemIndex={activeItemIndex}
         numberOfCards={2}
+        infiniteLoop = {true}
         gutter={20}
-        leftChevron={<button>{'<'}</button>}
-        rightChevron={<button>{'>'}</button>}
+        leftChevron={<AiFillLeftCircle fontSize={50} />}
+        rightChevron={<AiFillRightCircle fontSize={50} />}
         outsideChevron
         chevronWidth={chevronWidth}
       >
@@ -30,7 +31,8 @@ const Reviews = () => {
             <div style={{ height: 400, width: 450, background: '#FFF' }}>
             <img  style={{width:'150px', borderRadius: '50%'}} src={person} alt="" />
             <h2>{review.name}</h2>
-            <Rating initialRating={review.rating}
+            <Rating   emptySymbol={<AiOutlineStar  style={{color: 'goldenrod'}}/>}
+  fullSymbol={<AiFillStar style={{color: 'goldenrod'}} />} initialRating={review.rating}
    readonly/>
             <p> {review.review} </p>
             </div>
