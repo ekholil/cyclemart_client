@@ -45,7 +45,7 @@ const Dashboard = () => {
           </CCol>
           <CCol md={10}>
             <Switch>
-              <Route path={`${path}/myorder`}>
+              <Route exact path={`${path}/myorder`}>
                 <MyOrders />
               </Route>
               <Route path={`${path}/review`}>
@@ -57,7 +57,7 @@ const Dashboard = () => {
               <Route path={`${path}/logout`}>
                 <Logout />
               </Route>
-              <AdminRoute path={`${path}/manageorder`}>
+              <AdminRoute exact path={`${path}/manageorder`}>
                 <ManageOrder />
               </AdminRoute>
               <AdminRoute path={`${path}/manageproduct`}>
