@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import swal from 'sweetalert';
 const MakeAdmin = () => {
     const [email, setEmail] = useState('')
     const handleOnblur = e => {
@@ -18,7 +18,12 @@ const MakeAdmin = () => {
             body: JSON.stringify(user)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.acknowledged) {
+                swal("Success", `${email} is now admin`, "success");
+                setEmail('')
+              }
+        })
         e.preventDefault()
     }
     return (

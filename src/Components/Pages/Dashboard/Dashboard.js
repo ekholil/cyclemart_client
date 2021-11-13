@@ -19,7 +19,7 @@ import Pay from './Pay';
 import Review from './Review'
 const Dashboard = () => {
   let { path, url } = useRouteMatch();
-  const {admin} = useAuth()
+  const {admin, user} = useAuth()
   return (
     <div>
       <CContainer style={{marginTop:'80px'}}>
@@ -40,10 +40,14 @@ const Dashboard = () => {
           <Link className="mb-2" activeStyle={{backgroundColor:'green'}} to={`${url}/manageproduct`}><CButton>Manage Products</CButton></Link>
           <Link className="mb-2" activeStyle={{backgroundColor:'green'}} to={`${url}/addproduct`}><CButton>Add Product</CButton></Link>
           <Link className="mb-2" activeStyle={{backgroundColor:'green'}} to={`${url}/makeadmin`}><CButton>Make Admin</CButton></Link>
+          <NavLink className="mb-2" activeStyle={{backgroundColor:'green'}} to={`${url}/logout`}><CButton>LogOut</CButton></NavLink>
             </div>
           }
           </CCol>
           <CCol md={10}>
+            <div>
+              <h1 className="text-center text-success">HI {user.diplayName}! Welcome to DashBoard</h1>
+            </div>
             <Switch>
               <Route exact path={`${path}/myorder`}>
                 <MyOrders />

@@ -35,7 +35,7 @@ const ManageOrder = () => {
     const handleDelete = id => {
         swal({
             title: "Are you sure?",
-            text: "Your order will be cancelled",
+            text: "This order will be deleted",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -51,7 +51,7 @@ const ManageOrder = () => {
                     if(data.acknowledged){
                         const remaining = orders.filter(item => item._id !== id)
                         setOrders(remaining)
-                        swal("Your order is cancelled", {
+                        swal("This order is deleted", {
                             icon: "success",
                           });
                     }
@@ -73,7 +73,6 @@ const ManageOrder = () => {
                     <CTableHeaderCell scope="col">Name</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Email</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Product Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Price</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Status</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Action</CTableHeaderCell>
                     </CTableRow>
@@ -86,11 +85,10 @@ const ManageOrder = () => {
                         <CTableDataCell>{item.name}</CTableDataCell>
                         <CTableDataCell>{item.email}</CTableDataCell>
                         <CTableDataCell>{item.productName}</CTableDataCell>
-                        <CTableDataCell>{item.totalPrice}</CTableDataCell>
                         <CTableDataCell>{item.status}</CTableDataCell>
                         <CTableDataCell>
                           
-                            <button onClick={() => updateStatus(item._id, index)} className="btn btn-success text-white me-3">Shipped</button>
+                            <button onClick={() => updateStatus(item._id, index)} className="btn btn-success text-white me-3">Update Status</button>
                             <button onClick={() => handleDelete(item._id)} className="btn btn-danger text-white">Delete</button>
                            
                         </CTableDataCell>

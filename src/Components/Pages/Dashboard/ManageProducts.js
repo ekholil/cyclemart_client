@@ -1,12 +1,10 @@
 import { CSpinner, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react';
 import React, { useEffect, useState } from 'react';
 import swal from "sweetalert";
-import useAuth from '../../../Hooks/useAuth';
-
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([])
-    const {user} = useAuth()
+   
     useEffect(() => {
         fetch(`https://calm-gorge-61039.herokuapp.com/products`)
         .then(res => res.json())
